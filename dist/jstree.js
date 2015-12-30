@@ -3711,7 +3711,7 @@
 		 * @return {Boolean}
 		 * @trigger rename_node.jstree
 		 */
-		rename_node : function (obj, val) {
+		rename_node : function (obj, val, silent) {
 			var t1, t2, old;
 			if($.isArray(obj)) {
 				obj = obj.slice();
@@ -3736,7 +3736,9 @@
 			 * @param {String} text the new value
 			 * @param {String} old the old value
 			 */
-			this.trigger('rename_node', { "node" : obj, "text" : val, "old" : old });
+			if (!silent) {
+				this.trigger('rename_node', { "node" : obj, "text" : val, "old" : old });
+			}
 			return true;
 		},
 		/**
